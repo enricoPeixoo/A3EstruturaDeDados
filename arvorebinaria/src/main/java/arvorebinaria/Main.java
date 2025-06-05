@@ -16,14 +16,14 @@ public class Main {
         arvore.adicionar(20);
 
 
-        arvore.remover(20);
-        arvore.remover(5);
-        arvore.remover(8);
-        arvore.remover(9);
-        arvore.remover(13);
-        arvore.remover(7);
-        arvore.remover(18);
-        arvore.remover(10);
+        // arvore.remover(20);
+        // arvore.remover(5);
+        // arvore.remover(8);
+        // arvore.remover(9);
+        // arvore.remover(13);
+        // arvore.remover(7);
+        // arvore.remover(18);
+        // arvore.remover(10);
 
         JFrame frame = new JFrame("Visualização da Árvore Binária");
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
