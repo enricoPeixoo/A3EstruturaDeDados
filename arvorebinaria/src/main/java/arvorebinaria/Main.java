@@ -1,35 +1,30 @@
 package arvorebinaria;
 
-import javax.swing.JFrame;
+import javax.swing.*;
 
 public class Main {
     public static void main(String[] args) {
-        ArvoreBinaria arvore = new ArvoreBinaria();
+        ArvoreBinaria avl = new ArvoreBinaria();
 
-        arvore.adicionar(10);
-        arvore.adicionar(8);
-        arvore.adicionar(5);
-        arvore.adicionar(9);
-        arvore.adicionar(7);
-        arvore.adicionar(18);
-        arvore.adicionar(13);
-        arvore.adicionar(20);
+        // Inserções
+        avl.adicionar(7);
+        avl.adicionar(6);
+        avl.adicionar(8);
+        avl.adicionar(5);
+        avl.adicionar(3);
+        avl.adicionar(2);
+        avl.adicionar(1);
 
+        // Remoções
+        avl.remover(1);
+        avl.remover(5);
 
-        // arvore.remover(20);
-        // arvore.remover(5);
-        // arvore.remover(8);
-        // arvore.remover(9);
-        // arvore.remover(13);
-        // arvore.remover(7);
-        // arvore.remover(18);
-        // arvore.remover(10);
-
-        JFrame frame = new JFrame("Visualização da Árvore Binária");
+        // Criar a janela
+        JFrame frame = new JFrame("Árvore AVL");
+        ArvoreAVLViewer painel = new ArvoreAVLViewer(avl.getRaiz());
+        frame.add(painel);
+        frame.setSize(800, 600);
         frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-        frame.getContentPane().add(new PainelArvore(arvore.getRaiz()));
-        frame.pack();
-        frame.setLocationRelativeTo(null);
         frame.setVisible(true);
         
     }
