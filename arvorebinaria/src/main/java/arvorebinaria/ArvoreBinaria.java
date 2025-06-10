@@ -8,6 +8,13 @@ public class ArvoreBinaria {
         this.raiz = null;
     }
 
+    int rotacoesSimplesEsquerda = 0;
+    int rotacoesSimplesDireita = 0;
+    int rotacoesDuplaEsquerda = 0; // direita-esquerda
+    int rotacoesDuplaDireita = 0;  // esquerda-direita
+
+
+
     public void adicionar(int valor) {
     this.raiz = adicionarAVL(this.raiz, valor);
 }
@@ -38,11 +45,13 @@ public Elemento adicionarAVL(Elemento node, int valor) {
             return rotacaoEsquerda(node); // Caso Direita-Direita
 
         if (balance > 1 && valor > node.esquerda.valor) {
+            rotacoesDuplaDireita++;
             node.esquerda = rotacaoEsquerda(node.esquerda);
             return rotacaoDireita(node); // Caso Esquerda-Direita
         }
 
         if (balance < -1 && valor < node.direita.valor) {
+            rotacoesDuplaEsquerda++;
             node.direita = rotacaoDireita(node.direita);
             return rotacaoEsquerda(node); // Caso Direita-Esquerda
         }
@@ -99,6 +108,7 @@ public Elemento removerAVL(Elemento node, int valor) {
         return rotacaoDireita(node); // Esquerda-Esquerda
 
     if (balance > 1 && fatorBalanceamento(node.esquerda) < 0) {
+        rotacoesDuplaDireita++;
         node.esquerda = rotacaoEsquerda(node.esquerda);
         return rotacaoDireita(node); // Esquerda-Direita
     }
@@ -107,6 +117,7 @@ public Elemento removerAVL(Elemento node, int valor) {
         return rotacaoEsquerda(node); // Direita-Direita
 
     if (balance < -1 && fatorBalanceamento(node.direita) > 0) {
+        rotacoesDuplaEsquerda++;
         node.direita = rotacaoDireita(node.direita);
         return rotacaoEsquerda(node); // Direita-Esquerda
     }
@@ -141,6 +152,8 @@ public Elemento getMinValueNode(Elemento node) {
     }
 
     public Elemento rotacaoDireita (Elemento y) {
+        rotacoesSimplesDireita++;
+
         Elemento x = y.esquerda;
         Elemento t2 = x.direita;
 
@@ -154,6 +167,8 @@ public Elemento getMinValueNode(Elemento node) {
     }
 
     public Elemento rotacaoEsquerda (Elemento x) {
+        rotacoesSimplesEsquerda++;
+
         Elemento y = x.direita;
         Elemento t2 = y.esquerda;
 
@@ -164,6 +179,10 @@ public Elemento getMinValueNode(Elemento node) {
         y.altura = Math.max(altura(y.esquerda), altura(y.direita)) + 1;
 
         return y;
+    }
+
+    public int getNumeroRotacoes () {
+        return  rotacoesSimplesEsquerda + rotacoesSimplesDireita + rotacoesDuplaEsquerda + rotacoesDuplaDireita;
     }
 
     

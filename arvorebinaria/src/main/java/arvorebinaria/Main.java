@@ -9,15 +9,16 @@ public class Main {
         // Inserções
         avl.adicionar(7);
         avl.adicionar(6);
-        avl.adicionar(8);
+        avl.adicionar(9);
         avl.adicionar(5);
-        avl.adicionar(3);
-        avl.adicionar(2);
-        avl.adicionar(1);
+        avl.adicionar(4);
+        
+        
 
         // Remoções
-        avl.remover(1);
-        avl.remover(5);
+        //avl.remover(1);
+
+        System.out.println("Número de rotações: "+ avl.getNumeroRotacoes());
 
         // Criar a janela
         JFrame frame = new JFrame("Árvore AVL");
