@@ -185,5 +185,21 @@ public Elemento getMinValueNode(Elemento node) {
         return  rotacoesSimplesEsquerda + rotacoesSimplesDireita + rotacoesDuplaEsquerda + rotacoesDuplaDireita;
     }
 
+    public boolean buscar(int valor) {
+    Elemento atual = this.raiz;
+
+    while (atual != null) {
+        if (valor == atual.valor) {
+            return true;
+        } else if (valor < atual.valor) {
+            atual = atual.esquerda;
+        } else {
+            atual = atual.direita;
+        }
+    }
+
+    return false; // Valor não encontrado
+}
+
     
 }
